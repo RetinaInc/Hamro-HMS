@@ -2,7 +2,11 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import PatientDashboard from 'components/pages/patientDashboard';
+import NavBar from 'components/header/navBar';
+import PatientPageWrapper from 'components/pages/patients/patientPageWrapper'
+import Dashboard from 'components/pages/dashboard';
+//import PatientDashboard from 'components/pages/patients/listPage';
+//import PatientList from 'components/pages/patientList';
 import StateApi from 'utilities/stateApi';
 import UrlHelper from 'utilities/urlHelper';
 
@@ -29,9 +33,13 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Switch>
-                    <Route path='/' component={PatientDashboard} />
-                </Switch>
+                <NavBar/>
+                <div id="page-wrapper">
+                    <Switch>
+                        <Route exact={true} path='/' component={Dashboard}/>
+                        <Route path='/patients' component={PatientPageWrapper}/>
+                    </Switch>
+                </div>
             </div>
         );
     }
