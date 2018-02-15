@@ -3,6 +3,6 @@
 /yarn.lock
 .idea/
 /front-end/static-pages/
-/front-end/build/
 /front-end/webApp/build/
 /.env
+/logs/

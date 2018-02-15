@@ -6,7 +6,10 @@
     "license": "MIT",
     "NODE_PATH": "./front-end",
     "scripts": {
-        "start": "NODE_PATH=./back-end node server.js",
+        "dev": "pm2 start developmentProcess.json",
+        "production": "pm2 start productionProcess.json",
+        "stop-server": "pm2 delete all",
+        "log": "pm2 logs",
         "webpack": "webpack -wd",
         "code-format": "prettier --find-config-path --write  'front-end/**/*.js'",
         "build": "webpack -p",
@@ -89,6 +92,7 @@
         "pg-hstore": "^2.3.2",
         "sequelize": "^3.30.4",
         "unit.js": "^2.0.0",
-        "winston": "^2.3.1"
+        "winston": "^2.3.1",
+        "pm2": "^2.8.0"
     }
 }
