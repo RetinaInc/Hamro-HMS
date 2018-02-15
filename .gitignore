@@ -3,3 +3,4 @@
 /yarn.lock
 .idea/
 /front-end/static-pages/
+/front-end/build/

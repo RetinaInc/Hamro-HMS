@@ -4,14 +4,13 @@
     "description": "Hospital Management System",
     "repository": "git@github.com:sanishmaharjan/Hamro-HMS.git",
     "license": "MIT",
-    "NODE_PATH": "./app",
+    "NODE_PATH": "./front-end",
     "scripts": {
         "webpack": "webpack -wd",
-        "code-format": "prettier --find-config-path --write  'app/**/*.js'",
+        "code-format": "prettier --find-config-path --write  'front-end/**/*.js'",
         "build": "webpack -p",
-        "test": "NODE_PATH=./app jest --notify",
-        "test-watch": "NODE_PATH=./app jest --watch",
-        "test-coverage": "NODE_PATH=./app jest --coverage"
+        "test": "NODE_PATH=./front-end jest --notify",
+        "test-coverage": "NODE_PATH=./front-end jest --coverage"
     },
     "babel": {
         "presets": [
