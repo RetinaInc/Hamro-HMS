@@ -18,7 +18,7 @@ const config = {
         app: ['./front-end/index.js']
     },
     output: {
-        path: path.resolve(__dirname, 'front-end/build'),
+        path: path.resolve(__dirname, 'front-end/webApp/build'),
         filename: '[name].js'
     },
     module: {
