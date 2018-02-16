@@ -4,6 +4,7 @@
             "env": {
                 "NODE_PATH": "./back-end"
             },
+            "name": "dev-server",
             "exec_mode": "cluster",
             "script": "server/server.js",
             "instances": 1,

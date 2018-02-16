@@ -10,6 +10,7 @@
         "production": "pm2 start server/process/production.json",
         "stop-server": "pm2 delete all",
         "log": "pm2 logs",
+        "monitor": "pm2 monit",
         "webpack": "webpack -wd",
         "code-format": "prettier --find-config-path --write  'front-end/**/*.js'",
         "build": "webpack -p",
