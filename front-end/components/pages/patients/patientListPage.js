@@ -47,6 +47,8 @@ export default class PatientListPage extends React.Component {
                                         &nbsp;
                                         <a href="#/patients/form">Edit</a>
                                         &nbsp; | &nbsp;
+                                        <a href="#/patients/details/baf7bd38-d225-11e4-9c67-080027b662ec">Details</a>
+                                        &nbsp; | &nbsp;
                                         <a href="#/patients/checkin">Check-In</a>
                                     </td>
                                 </tr>
