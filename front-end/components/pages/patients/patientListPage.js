@@ -45,9 +45,9 @@ export default class PatientListPage extends React.Component {
                                     <td className="center">Admitted</td>
                                     <td className="center">
                                         &nbsp;
-                                        <a href="#">Edit</a>
+                                        <a href="#/patients/form">Edit</a>
                                         &nbsp; | &nbsp;
-                                        <a href="#">Discharge</a>
+                                        <a href="#/patients/checkin">Check-In</a>
                                     </td>
                                 </tr>
                                 <tr className="odd gradeX">

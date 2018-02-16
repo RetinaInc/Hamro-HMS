@@ -3,6 +3,7 @@ import {Route} from 'react-router-dom';
 
 import PatientListPage from 'components/pages/patients/patientListPage';
 import PatientAddEditPage from 'components/pages/patients/patientAddEditPage';
+import PatientCheckInPage from 'components/pages/patients/patientCheckInPage';
 
 export default class PatientPageWrapper extends React.Component{
     render(){
@@ -10,6 +11,7 @@ export default class PatientPageWrapper extends React.Component{
             <Route exact={true} path={this.props.match.url} component={PatientListPage}/>
             <Route exact={true} path={`${this.props.match.url}/list`} component={PatientListPage}/>
             <Route exact={true} path={`${this.props.match.url}/form`} component={PatientAddEditPage}/>
+            <Route exact={true} path={`${this.props.match.url}/checkin`} component={PatientCheckInPage}/>
         </div>
     }
 }
