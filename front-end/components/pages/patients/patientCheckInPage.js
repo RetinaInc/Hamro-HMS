@@ -3,7 +3,7 @@ import React from 'react';
 export default class PatientCheckInPage extends React.Component {
     style = {
         textarea: {
-            resize: false
+            resize: 'none'
         },
         startVisitDropDown: {
             width: 200,
