@@ -2,10 +2,10 @@
  * load modules
  */
 var express = require('express');                           //Express Web Server
-var mainApplication = require("./back-end/config/main");            //load Application
+var mainApplication = require("../back-end/config/main");   //load Application
 
-let logger = require('./back-end/component/logger');
-let config = require('./back-end/config/config');
+let logger = require('../back-end/component/logger');
+let config = require('../back-end/config/config');
 /**
  * Configure express project
  */

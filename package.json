@@ -6,8 +6,8 @@
     "license": "MIT",
     "NODE_PATH": "./front-end",
     "scripts": {
-        "dev": "pm2 start developmentProcess.json",
-        "production": "pm2 start productionProcess.json",
+        "dev": "pm2 start server/process/development.json",
+        "production": "pm2 start server/process/production.json",
         "stop-server": "pm2 delete all",
         "log": "pm2 logs",
         "webpack": "webpack -wd",

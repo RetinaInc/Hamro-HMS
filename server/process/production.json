@@ -5,7 +5,7 @@
                 "NODE_PATH": "./back-end"
             },
             "exec_mode": "cluster",
-            "script": "server.js",
+            "script": "server/server.js",
             "instances": 4,
             "watch": false,
             "error_file": "logs/err.log",
