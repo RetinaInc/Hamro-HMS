@@ -1,5 +1,11 @@
 import React from 'react';
 
+import VisitHistoryPage from 'components/pages/patients/visitHistoryPage';
+import MedicationListPage from 'components/pages/patients/medicationListPage';
+import RadiologyListPage from 'components/pages/patients/radiologyListPage';
+import LabTestListPage from 'components/pages/patients/labTestListPage';
+import PlanList from 'components/pages/patients/planListPage';
+
 export default class PatientDetailPage extends React.Component {
     render() {
         return <div>
@@ -106,6 +112,11 @@ export default class PatientDetailPage extends React.Component {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                    <button type="button" className="btn btn-default">Consultation</button>
+                                    </div>
+                                </div>
                             </div>
                             <div className="panel-heading">
                                 Other Information
@@ -131,19 +142,19 @@ export default class PatientDetailPage extends React.Component {
 
                                 <div className="tab-content">
                                     <div className="tab-pane fade in active" id="history">
-                                        Visit History
+                                        <VisitHistoryPage />
                                     </div>
                                     <div className="tab-pane fade" id="medication">
-                                        Medication
+                                        <MedicationListPage />
                                     </div>
                                     <div className="tab-pane fade" id="radiology">
-                                        Radiology
+                                        <RadiologyListPage />
                                     </div>
                                     <div className="tab-pane fade" id="lab">
-                                        Lab
+                                        <LabTestListPage/>
                                     </div>
                                     <div className="tab-pane fade" id="plan">
-                                        Plan
+                                        <PlanList/>
                                     </div>
                                 </div>
                             </div>
