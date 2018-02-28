@@ -1,8 +1,7 @@
 let Controller = require('baseComponents/controller');
 let Logger = require('baseComponents/logger');
 let Response = require('baseComponents/response');
-let personServcie = require('services/personService');
-var path = require('path');
+var Path = require('path');
 
 let clinicalController = new Controller();
 clinicalController.router = function (controller) {
@@ -14,7 +13,6 @@ clinicalController.router = function (controller) {
 
     controller.index(function (req, res, next) {
         try {
-            personServcie.getPersonById(2);
             let data = {
                 name: "Manish Maharjan",
                 pageName: "Home"
@@ -27,5 +25,5 @@ clinicalController.router = function (controller) {
     });
 };
 
-clinicalController.route(path.resolve(__filename));
+clinicalController.route(Path.resolve(__filename));
 module.exports = clinicalController;
