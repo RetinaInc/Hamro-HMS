@@ -1,9 +1,9 @@
-let Model = require('models');
+let Person = require('models/person');
 
 module.exports = {
     getPersonById: function (id) {
         return new Promise(function (resolve, reject) {
-            Model.persons.findById(id).then(function (person) {
+            Person.findById(id).then(function (person) {
                 if (person != null) {
                     return resolve(person.dataValues);
                 } else {
@@ -16,7 +16,7 @@ module.exports = {
     },
     getAllPersons: function () {
         return new Promise(function (resolve, reject) {
-            Model.Persons.findAll().then(function (persons) {
+            Person.findAll().then(function (persons) {
                 let personDataList = [];
                 for (let person of persons) {
                     personDataList.push(person.dataValues);
