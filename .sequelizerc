@@ -1,0 +1,7 @@
+const path = require('path');
+console.log(path.resolve('back-end/config', 'config.js'));
+module.exports = {
+    'config': path.resolve('back-end/config', 'config.js'),
+    'models-path': path.resolve('back-end', 'models'),
+    'migrations-path': './back-end/migrations'
+};

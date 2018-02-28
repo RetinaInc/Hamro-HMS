@@ -16,9 +16,10 @@
         "build": "webpack -p",
         "test": "NODE_PATH=./front-end jest --notify",
         "test-coverage": "NODE_PATH=./front-end jest --coverage",
-        "migrate:create": "knex migrate:make",
-        "migrate:up": "knex migrate:latest --env runtime",
-        "migrate:down": "knex migrate:rollback --env runtime"
+        "migrate:create": "sequelize migration:create --name",
+        "migrate:up": "sequelize db:migrate --env runtime",
+        "migrate:down": "sequelize db:migrate:undo --env runtime",
+        "hp": "sequelize help:db:migrate"
     },
     "babel": {
         "presets": [
@@ -81,11 +82,10 @@
         "formidable": "^1.0.17",
         "fs-extra": "^0.22.1",
         "ink-docstrap": "*",
-        "knex": "^0.14.4",
         "lodash": "^4.17.4",
         "lodash.pickby": "^4.6.0",
         "moment": "^2.18.1",
-        "pg": "^4.5.6",
+        "pg": "^7.4.1",
         "pg-hstore": "^2.3.2",
         "pm2": "^2.8.0",
         "prop-types": "^15.6.0",
@@ -94,7 +94,7 @@
         "react-dom": "^16.2.0",
         "react-notify": "^3.0.0",
         "react-router-dom": "^4.2.2",
-        "sequelize": "^3.30.4",
+        "sequelize": "^4.35.0",
         "sequelize-cli": "^4.0.0",
         "sqlite3": "^3.1.13",
         "style-loader": "^0.19.0",

@@ -14,7 +14,6 @@
         });
 
         controller.index(function (req, res, next) {
-            // GET : /home
             try {
                 let data = {
                     name: "Manish Maharjan",
