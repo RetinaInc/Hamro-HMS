@@ -6,3 +6,5 @@
 /front-end/webApp/build/
 /.env
 /logs/
+/back-end/test-db/
+/yarn-error.log

@@ -15,7 +15,10 @@
         "code-format": "prettier --find-config-path --write  'front-end/**/*.js'",
         "build": "webpack -p",
         "test": "NODE_PATH=./front-end jest --notify",
-        "test-coverage": "NODE_PATH=./front-end jest --coverage"
+        "test-coverage": "NODE_PATH=./front-end jest --coverage",
+        "migrate:create": "knex migrate:make",
+        "migrate:up": "knex migrate:latest --env runtime",
+        "migrate:down": "knex migrate:rollback --env runtime"
     },
     "babel": {
         "presets": [
@@ -78,6 +81,7 @@
         "formidable": "^1.0.17",
         "fs-extra": "^0.22.1",
         "ink-docstrap": "*",
+        "knex": "^0.14.4",
         "lodash": "^4.17.4",
         "lodash.pickby": "^4.6.0",
         "moment": "^2.18.1",
@@ -91,6 +95,8 @@
         "react-notify": "^3.0.0",
         "react-router-dom": "^4.2.2",
         "sequelize": "^3.30.4",
+        "sequelize-cli": "^4.0.0",
+        "sqlite3": "^3.1.13",
         "style-loader": "^0.19.0",
         "unit.js": "^2.0.0",
         "webpack": "^3.9.1",
