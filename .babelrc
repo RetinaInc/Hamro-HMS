@@ -1,0 +1,9 @@
+{
+    "presets": [
+        "babel-polyfill",
+        "env"
+    ],
+    "plugins": [
+        "babel-plugin-add-module-exports"
+    ]
+}

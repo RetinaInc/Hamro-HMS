@@ -1,3 +1,4 @@
+'use strict';
 let Controller = require('baseComponents/controller');
 let Logger = require('baseComponents/logger');
 let Path = require('path');

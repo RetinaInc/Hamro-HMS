@@ -1,10 +1,13 @@
+'use strict';
 require('dotenv').config();
 
 module.exports = {
     port: process.env.PORT || 8282,
     test: {
         dialect: 'sqlite',
-        storage: 'back-end/test-db/hms-db.sqlite',
+        storage: 'back-end/tests/db/hms-db.sqlite',
+        "seederStoragePath": "sequelizeData.json",
+        logging: (process.env.DB_LOGGING == 'true') ? true : false,
     },
     runtime: {
         username: process.env.DB_USER,
@@ -12,7 +15,7 @@ module.exports = {
         database: process.env.DB_NAME,
         host: process.env.DB_HOST || 'localhost',
         dialect: process.env.DB_CLIENT || 'postgres',
-        logging: true,
+        logging: (process.env.DB_LOGGING == 'true') ? true : false,
         pool: {
             min: parseInt(process.env.DB_POOL_MIN) || 2,
             max: parseInt(process.env.DB_POOL_MAX) || 10,

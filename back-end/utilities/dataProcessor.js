@@ -1,3 +1,4 @@
+'use strict';
 let path = require('path');             //used for file path
 let fs = require('fs-extra');           //File System - for file manipulation
 let formidable = require('formidable');

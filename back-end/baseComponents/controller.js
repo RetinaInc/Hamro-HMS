@@ -1,3 +1,4 @@
+'use strict';
 let expressController = require('express-ctrlr');
 
 class Controller {

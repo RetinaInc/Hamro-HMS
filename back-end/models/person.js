@@ -1,3 +1,4 @@
+'use strict';
 let Sequelize = require('sequelize');
 let DataTypes = Sequelize.DataTypes;
 let Model = require('baseComponents/model');
