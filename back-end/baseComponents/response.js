@@ -82,6 +82,17 @@ class Response {
         response.status(errorCode);
         response.json({data: apiData});
     }
+
+    static responseApiDenied(response) {
+        let apiData = {
+            'errorCode': 401,
+            'message': 'Access Denied! Please login.'
+        };
+
+        response.statusCode = 401;
+        response.setHeader('WWW-Authenticate', 'Basic realm="Authenticate to Access"');
+        response.end('Access denied');
+    }
 }
 
 /**

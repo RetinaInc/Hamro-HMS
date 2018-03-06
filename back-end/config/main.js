@@ -7,6 +7,7 @@ let session = require('express-session');
 let expressHandlebars = require('express-handlebars');
 let constants = require("config/constants");
 let logger = require('baseComponents/logger');
+let Uuid = require('uuid/v1');
 
 /**
  * App configuration module
@@ -47,6 +48,9 @@ var main = {
         app.enable('view cache');
         app.use(session({
             'secret': 'sessionKey!@#',
+            genid: function(req) {
+                return  Uuid();
+            },
             'cookie' : {
                 'path': '/',
                 'httpOnly': false,

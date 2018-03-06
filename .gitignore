@@ -9,3 +9,4 @@
 /back-end/test-db/
 /yarn-error.log
 /package-lock.json
+/dist/

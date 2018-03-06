@@ -4,20 +4,25 @@ let Logger = require('baseComponents/logger');
 let Path = require('path');
 let personService = require('services/personService');
 let Response = require('baseComponents/response');
+let Auth = require('baseComponents/auth');
 
 let personController = new Controller();
 personController.router = function (controller) {
-    controller.before(function (req, res, next) {
+    controller.before(async (req, res, next) => {
         // before action execute before every action
         Logger.info('Execute before every action');
-        next();
+        if (await Auth.authenticate(req)) {
+            next();
+        } else {
+            Response.responseApiDenied(res);
+        }
     });
 
     controller.index(function (req, res, next) {
         // GET : /api/person
-        personService.getAllPersons().then(personDataList=> {
+        personService.getAllPersons().then(personDataList => {
             Response.responseApi(res, personDataList);
-        }).catch(error=> {
+        }).catch(error => {
             Logger.error(error);
             Response.responseApiError(res, '500', error.message ? error.message : error);
         });
@@ -27,9 +32,9 @@ personController.router = function (controller) {
         // GET : /api/person/:id
         let id = parseInt(req.params.id, 10);
         if (id) {
-            personService.getPersonById(id).then(personData=> {
+            personService.getPersonById(id).then(personData => {
                 Response.responseApi(res, personData);
-            }).catch(error=> {
+            }).catch(error => {
                 Logger.error(error);
                 Response.responseApiError(res, '500', error.message ? error.message : error);
             });
