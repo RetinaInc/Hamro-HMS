@@ -8,7 +8,7 @@ let Model = require('baseComponents/model');
 
 let Person = Model.define('person', {
     id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         validate: {
@@ -90,9 +90,5 @@ let Person = Model.define('person', {
     },
     tableName: 'persons',
 });
-
-Person.associate = function (models) {
-    // associations can be defined here
-};
 
 module.exports = Person;
