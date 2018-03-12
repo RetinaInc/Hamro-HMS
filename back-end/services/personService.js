@@ -5,7 +5,7 @@ module.exports = {
         return await Person.findById(id);
     },
     getAllPersons: async () => {
-        return Person.findAll();
+        return await Person.findAll();
     },
     savePerson: async (person, options) => {
         if(person.validate()){

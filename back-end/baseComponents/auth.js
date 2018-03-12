@@ -2,6 +2,7 @@
 
 let auth = require('basic-auth');
 let encrypter = require('node-password-encrypter');
+let UserService = require('services/userService');
 
 class Auth {
     static async authenticate(req) {
@@ -20,31 +21,21 @@ class Auth {
     }
 
     static async login(creds, req) {
-        if (await Auth.validUser(creds)) {
-            req.session.userUuid = 'b7374ee0-2122-11e8-8737-7525b2eb2d92';
-            req.session.user = creds.name;
+        let user = await UserService.getUserByUserName(creds.name);
+        if(user != null && await Auth.isValidUser(creds, user)){
+            req.session.userUuid = user.uuid;
+            req.session.user = user.userName;
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
-    static async validUser(creds) {
-        let tempEncrypt = await encrypter.encrypt({
-            content: 'admin!@#',
-            keylen: 64,
-        });
-
-        console.log('--------------------  validUser  --------------');
-        console.log(tempEncrypt.salt);
-        console.log(tempEncrypt.encryptedContent);
-        console.log(creds.pass);
-        console.log(creds.name);
-
+    static async isValidUser(creds, user) {
         let isValidPassword = await encrypter.compare({
             content: creds.pass,
-            encryptedContent: tempEncrypt.encryptedContent,
-            salt: tempEncrypt.salt,
+            encryptedContent: user.password,
+            salt: user.salt,
             keylen: 64
         });
 
