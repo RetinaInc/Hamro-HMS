@@ -24,11 +24,11 @@ module.exports = {
               unique: true
           },
           password: {
-              type: Sequelize.DataTypes.STRING(64),
+              type: Sequelize.DataTypes.STRING(128),
               allowNull: true
           },
           salt: {
-              type: Sequelize.DataTypes.STRING(225),
+              type: Sequelize.DataTypes.TEXT(),
               allowNull: true
           },
           isActive: {

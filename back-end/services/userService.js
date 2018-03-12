@@ -15,13 +15,5 @@ module.exports = {
     },
     getUserByUserName: async (userName) => {
         return await User.findOne({ where: {userName: userName, isDeleted: false} });
-    },
-    encryptPassword: async (password) => {
-        let tempEncrypt = await encrypter.encrypt({
-            content: password,
-            keylen: 64,
-        });
-
-        return tempEncrypt;
     }
 };
