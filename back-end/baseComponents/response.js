@@ -64,13 +64,8 @@ class Response {
     }
 
     static responseApi(response, data) {
-        let apiData = {
-            'statusCode': '200',
-            'data': data
-        };
-
         response.status('200');
-        response.json({data: apiData});
+        response.json({data: data});
     }
 
     static responseApiError(response, errorCode, errorMsg) {

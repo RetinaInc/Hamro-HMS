@@ -9,7 +9,7 @@ let config = require('../back-end/config/config');
 /**
  * Configure express project
  */
-app = module.exports = express();
+global.app = module.exports = express();
 mainApplication.init();
 
 /**

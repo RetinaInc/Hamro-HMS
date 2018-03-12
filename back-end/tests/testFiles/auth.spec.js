@@ -27,4 +27,9 @@ TestBase.describe('Auth tests', () => {
         assert.equal(128, encryptData.encryptedContent.length);
         assert.isNotNull(encryptData.salt);
     });
+
+    it('Should return basic Auth hash', () => {
+        let baseAuthHash = Auth.getBaseAuthHash('admin', 'admin!@#');
+        assert.equal('Basic YWRtaW46YWRtaW4hQCM=', baseAuthHash);
+    });
 });

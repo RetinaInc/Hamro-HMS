@@ -1,6 +1,7 @@
 'use strict';
 
 let auth = require('basic-auth');
+var Buffer = require('safe-buffer').Buffer;
 let encrypter = require('node-password-encrypter');
 let UserService = require('services/userService');
 
@@ -49,6 +50,12 @@ class Auth {
         });
 
         return tempEncrypt;
+    }
+
+    static getBaseAuthHash(user, password) {
+        var token = user + ':' + password;
+        var hash = Buffer.from(token).toString('base64');
+        return "Basic " + hash;
     }
 }
 
