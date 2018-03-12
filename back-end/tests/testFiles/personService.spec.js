@@ -75,7 +75,8 @@ TestBase.describe('PersonService tests', () => {
         assert.equal(person.fullName, 'New Person');
     });
 
-    it('Should throw error with invalid data', async () => {
+    // For referance
+    /*it('Should throw error with invalid data', async () => {
         let person = new Person();
         person.firstName = 'New';
         person.lastName = 'Person';
@@ -90,5 +91,5 @@ TestBase.describe('PersonService tests', () => {
         } catch (error) {
             assert.isOk('Should throw error');
         }
-    });
+    });*/
 });

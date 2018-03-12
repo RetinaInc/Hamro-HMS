@@ -23,8 +23,9 @@
         "webpack": "webpack -wd",
         "code:format": "prettier --find-config-path --write  'front-end/**/*.js'",
         "build": "webpack -p",
-        "test:frontEnd": "NODE_PATH=./front-end jest --notify",
-        "test:coverage": "NODE_PATH=./front-end jest --coverage"
+        "test:frontEnd": "NODE_PATH=./front-end jest --testPathIgnorePatterns dist/ --testPathPattern front-end/ --notify",
+        "test:coverage": "NODE_PATH=./front-end jest --testPathIgnorePatterns dist/ --testPathPattern front-end/ --coverage",
+        "test:all": "yarn test:backEnd && yarn test:frontEnd"
     },
     "babel": {
         "presets": [
@@ -57,7 +58,6 @@
         "babel-cli": "^6.26.0",
         "babel-eslint": "^8.0.2",
         "babel-loader": "^7.1.2",
-        "babel-plugin-add-module-exports": "^0.2.1",
         "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-2": "^6.24.1",
