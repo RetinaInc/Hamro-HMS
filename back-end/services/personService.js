@@ -8,7 +8,7 @@ module.exports = {
         return await Person.findAll();
     },
     savePerson: async (person, options) => {
-        if(person.validate()){
+        if (person.validate()) {
             return await person.save(options);
         }
     }

@@ -2,13 +2,13 @@
 let Model = require('baseComponents/model');
 
 class TestBase {
-    static describe(description, tests){
-        describe(description, function () {
+    static describe(description, tests) {
+        describe(description, function() {
             beforeEach(async () => {
                 TestBase.dbOptions.transaction = await Model.transaction();
             });
 
-            afterEach(function () {
+            afterEach(function() {
                 TestBase.dbOptions.transaction.rollback();
             });
 
@@ -18,7 +18,7 @@ class TestBase {
 }
 
 TestBase.dbOptions = {
-    transaction : null
+    transaction: null
 };
 
 module.exports = TestBase;

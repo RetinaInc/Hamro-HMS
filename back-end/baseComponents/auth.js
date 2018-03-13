@@ -23,7 +23,7 @@ class Auth {
 
     static async login(creds, req) {
         let user = await UserService.getUserByUserName(creds.name);
-        if (user != null && await Auth.isValidUser(creds, user)) {
+        if (user != null && (await Auth.isValidUser(creds, user))) {
             req.session.userUuid = user.uuid;
             req.session.user = user.userName;
             return true;
@@ -40,13 +40,13 @@ class Auth {
             keylen: 64
         });
 
-        return (creds.name === 'admin' && isValidPassword);
+        return creds.name === 'admin' && isValidPassword;
     }
 
     static async encryptPassword(password) {
         let tempEncrypt = await encrypter.encrypt({
             content: password,
-            keylen: 64,
+            keylen: 64
         });
 
         return tempEncrypt;
@@ -55,7 +55,7 @@ class Auth {
     static getBaseAuthHash(user, password) {
         var token = user + ':' + password;
         var hash = Buffer.from(token).toString('base64');
-        return "Basic " + hash;
+        return 'Basic ' + hash;
     }
 }
 

@@ -7,7 +7,7 @@ let Response = require('baseComponents/response');
 let Auth = require('baseComponents/auth');
 
 let personController = new Controller();
-personController.router = function (controller) {
+personController.router = function(controller) {
     controller.before(async (req, res, next) => {
         // before action execute before every action
         Logger.info('Execute before every action');
@@ -18,26 +18,32 @@ personController.router = function (controller) {
         }
     });
 
-    controller.index(function (req, res, next) {
+    controller.index(function(req, res, next) {
         // GET : /api/person
-        personService.getAllPersons().then(personDataList => {
-            Response.responseApi(res, personDataList);
-        }).catch(error => {
-            Logger.error(error);
-            Response.responseApiError(res, '500', error.message ? error.message : error);
-        });
-    });
-
-    controller.action("/:id", {method: 'GET'}, function (req, res, next) {
-        // GET : /api/person/:id
-        let id = parseInt(req.params.id, 10);
-        if (id) {
-            personService.getPersonById(id).then(personData => {
-                Response.responseApi(res, personData);
-            }).catch(error => {
+        personService
+            .getAllPersons()
+            .then((personDataList) => {
+                Response.responseApi(res, personDataList);
+            })
+            .catch((error) => {
                 Logger.error(error);
                 Response.responseApiError(res, '500', error.message ? error.message : error);
             });
+    });
+
+    controller.action('/:id', {method: 'GET'}, function(req, res, next) {
+        // GET : /api/person/:id
+        let id = parseInt(req.params.id, 10);
+        if (id) {
+            personService
+                .getPersonById(id)
+                .then((personData) => {
+                    Response.responseApi(res, personData);
+                })
+                .catch((error) => {
+                    Logger.error(error);
+                    Response.responseApiError(res, '500', error.message ? error.message : error);
+                });
         } else {
             Response.responseApiError(res, '406', 'Id should be integer');
         }

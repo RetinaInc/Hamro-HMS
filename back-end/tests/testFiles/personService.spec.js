@@ -7,7 +7,6 @@ let Person = require('models/person');
 let PersonService = require('services/personService');
 
 TestBase.describe('PersonService tests', () => {
-
     it('Should get person by Id', async () => {
         let person = await PersonService.getPersonById(2);
 
@@ -15,14 +14,14 @@ TestBase.describe('PersonService tests', () => {
         assert.equal(person.id, 2);
         assert.equal(person.uuid, 'ffee63e5-880f-470f-b8f4-836e382f74c3');
         assert.equal(person.fullName, 'Manish Maharjan');
-
     });
 
     it('Should return all persons', async () => {
         let personList = await PersonService.getAllPersons();
 
         assert.lengthOf(personList, 3);
-        assert.deepEqual({
+        assert.deepEqual(
+            {
                 id: personList[0].id,
                 uuid: personList[0].uuid,
                 firstName: personList[0].firstName,
@@ -38,9 +37,11 @@ TestBase.describe('PersonService tests', () => {
                 middleName: null,
                 lastName: 'Maharjan',
                 gender: 'Male',
-                bod: '1988-10-20 00:00:00.000 +00:00',
-            });
-        assert.deepEqual({
+                bod: '1988-10-20 00:00:00.000 +00:00'
+            }
+        );
+        assert.deepEqual(
+            {
                 id: personList[1].id,
                 uuid: personList[1].uuid,
                 firstName: personList[1].firstName,
@@ -50,14 +51,15 @@ TestBase.describe('PersonService tests', () => {
                 bod: personList[1].bod
             },
             {
-                "bod": "1980-02-05 00:00:00.000 +00:00",
-                "firstName": "Manish",
-                "gender": "Male",
-                "id": 2,
-                "lastName": "Maharjan",
-                "middleName": null,
-                "uuid": "ffee63e5-880f-470f-b8f4-836e382f74c3"
-            });
+                bod: '1980-02-05 00:00:00.000 +00:00',
+                firstName: 'Manish',
+                gender: 'Male',
+                id: 2,
+                lastName: 'Maharjan',
+                middleName: null,
+                uuid: 'ffee63e5-880f-470f-b8f4-836e382f74c3'
+            }
+        );
     });
 
     it('Should save new person', async () => {

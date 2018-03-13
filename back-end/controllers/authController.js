@@ -6,7 +6,7 @@ let Path = require('path');
 
 let Auth = require('baseComponents/auth');
 let authController = new Controller();
-authController.router = function (controller) {
+authController.router = function(controller) {
     controller.before(async (req, res, next) => {
         if (await Auth.authenticate(req)) {
             Logger.info('Redirecting to clinical app');
@@ -17,7 +17,7 @@ authController.router = function (controller) {
         }
     });
 
-    controller.index(function (req, res, next) {
+    controller.index(function(req, res, next) {
         try {
             Response.render(res, 'auth', {});
         } catch (error) {

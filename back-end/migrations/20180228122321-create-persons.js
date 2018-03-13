@@ -11,7 +11,7 @@ module.exports = {
             uuid: {
                 type: Sequelize.STRING(36),
                 allowNull: false,
-                unique: true,
+                unique: true
             },
             firstName: {
                 type: Sequelize.STRING(50),

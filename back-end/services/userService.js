@@ -9,11 +9,11 @@ module.exports = {
         return await User.findAll();
     },
     saveUser: async (user, options) => {
-        if(user.validate()){
+        if (user.validate()) {
             return await user.save(options);
         }
     },
     getUserByUserName: async (userName) => {
-        return await User.findOne({ where: {userName: userName, isDeleted: false} });
+        return await User.findOne({where: {userName: userName, isDeleted: false}});
     }
 };

@@ -1,10 +1,8 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-      return queryInterface.dropAllTables();
-  },
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.dropAllTables();
+    },
 
-  down: (queryInterface, Sequelize) => {
-
-  }
+    down: (queryInterface, Sequelize) => {}
 };

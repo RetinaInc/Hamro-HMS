@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import TopNavBar from 'components/navigations/topNavBar';
-import PatientPageWrapper from 'components/pages/patients/patientPageWrapper'
+import PatientPageWrapper from 'components/pages/patients/patientPageWrapper';
 import Dashboard from 'components/pages/dashboard';
 import StateApi from 'utilities/stateApi';
 import UrlHelper from 'utilities/urlHelper';
@@ -31,11 +31,11 @@ export default class ClinicalApp extends React.Component {
     render() {
         return (
             <div>
-                <TopNavBar/>
+                <TopNavBar />
                 <div id="page-wrapper">
                     <Switch>
-                        <Route exact={true} path='/' component={Dashboard}/>
-                        <Route path='/patients' component={PatientPageWrapper}/>
+                        <Route exact={true} path="/" component={Dashboard} />
+                        <Route path="/patients" component={PatientPageWrapper} />
                     </Switch>
                 </div>
             </div>

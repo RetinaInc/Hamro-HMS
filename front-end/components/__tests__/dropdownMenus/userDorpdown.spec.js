@@ -8,7 +8,5 @@ describe('UserDropDown', () => {
         const userDropDown = shallow(<UserDropDown />);
 
         expect(shallowToJson(userDropDown)).toMatchSnapshot();
-
-
     });
 });

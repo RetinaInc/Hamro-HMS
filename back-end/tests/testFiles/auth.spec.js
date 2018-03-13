@@ -7,7 +7,6 @@ let Auth = require('baseComponents/auth');
 let User = require('models/user');
 
 TestBase.describe('Auth tests', () => {
-
     it('Should validate user by username & password', async () => {
         let creds = {
             name: 'admin',

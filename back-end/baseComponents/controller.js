@@ -71,8 +71,8 @@ class Controller {
      */
     router(controller) {
         let self = this;
-        controller.index(function (req, res, next) {
-            res.end("GET : /" + self.controllerName);
+        controller.index(function(req, res, next) {
+            res.end('GET : /' + self.controllerName);
         });
     }
 
@@ -88,7 +88,7 @@ class Controller {
         }
 
         return this;
-    };
+    }
 
     /**
      * Check controller file name valid
@@ -98,13 +98,19 @@ class Controller {
     isValidFile(fullFilePath) {
         this.controllerFileName = fullFilePath.split(/\\|\//).pop();
         if (this.controllerFileName.lastIndexOf('Controller') != -1) {
-            this.controllerName = this.controllerFileName.substring(0, this.controllerFileName.lastIndexOf('Controller'));
+            this.controllerName = this.controllerFileName.substring(
+                0,
+                this.controllerFileName.lastIndexOf('Controller')
+            );
             let parseFullFilePath = fullFilePath.match(/controllers(.*)\//);
-            this.uri = typeof(parseFullFilePath[1]) != 'undefined' ? (parseFullFilePath[1] + '/' + this.controllerName) : '/' + this.controllerName;
+            this.uri =
+                typeof parseFullFilePath[1] != 'undefined'
+                    ? parseFullFilePath[1] + '/' + this.controllerName
+                    : '/' + this.controllerName;
 
             return true;
         } else {
-            throw new Error("500 Invalid controller file name");
+            throw new Error('500 Invalid controller file name');
         }
     }
 }

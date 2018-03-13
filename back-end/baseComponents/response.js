@@ -1,6 +1,5 @@
 'use strict';
 class Response {
-
     /**
      * Return Error message by error code
      * @param errorCode {string} error code
@@ -26,7 +25,7 @@ class Response {
             '503': 'Service Unavailable'
         };
 
-        return typeof(errorMsgList[errorCode]) != 'undefined' ? errorMsgList[errorCode] : 'Internal Server Error';
+        return typeof errorMsgList[errorCode] != 'undefined' ? errorMsgList[errorCode] : 'Internal Server Error';
     }
 
     /**
@@ -39,8 +38,7 @@ class Response {
     static render(response, viewPage, data = {}, layout) {
         let options = {};
         options.data = data;
-        if (layout)
-            options.layout = layout;
+        if (layout) options.layout = layout;
 
         response.render(viewPage, options);
     }
@@ -70,8 +68,8 @@ class Response {
 
     static responseApiError(response, errorCode, errorMsg) {
         let apiData = {
-            'errorCode': errorCode,
-            'message': errorMsg
+            errorCode: errorCode,
+            message: errorMsg
         };
 
         response.status(errorCode);
@@ -80,8 +78,8 @@ class Response {
 
     static responseApiDenied(response) {
         let apiData = {
-            'errorCode': 401,
-            'message': 'Access Denied! Please login.'
+            errorCode: 401,
+            message: 'Access Denied! Please login.'
         };
 
         response.statusCode = 401;

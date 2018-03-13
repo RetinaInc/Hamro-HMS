@@ -6,7 +6,7 @@ let Path = require('path');
 
 let Auth = require('baseComponents/auth');
 let clinicalController = new Controller();
-clinicalController.router = function (controller) {
+clinicalController.router = function(controller) {
     controller.before(async (req, res, next) => {
         if (await Auth.authenticate(req)) {
             next();
@@ -17,11 +17,11 @@ clinicalController.router = function (controller) {
         }
     });
 
-    controller.index(function (req, res, next) {
+    controller.index(function(req, res, next) {
         try {
             let data = {
-                name: "Manish Maharjan",
-                pageName: "Home"
+                name: 'Manish Maharjan',
+                pageName: 'Home'
             };
 
             Response.render(res, 'clinical', data);
