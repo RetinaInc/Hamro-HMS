@@ -8,7 +8,7 @@ import Dashboard from 'components/pages/dashboard';
 import StateApi from 'utilities/stateApi';
 import UrlHelper from 'utilities/urlHelper';
 
-class App extends React.Component {
+export default class ClinicalApp extends React.Component {
     static childContextTypes = {
         store: PropTypes.object
     };
@@ -42,5 +42,3 @@ class App extends React.Component {
         );
     }
 }
-
-export default App;

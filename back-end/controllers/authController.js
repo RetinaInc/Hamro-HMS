@@ -5,31 +5,26 @@ let Response = require('baseComponents/response');
 let Path = require('path');
 
 let Auth = require('baseComponents/auth');
-let clinicalController = new Controller();
-clinicalController.router = function (controller) {
+let authController = new Controller();
+authController.router = function (controller) {
     controller.before(async (req, res, next) => {
         if (await Auth.authenticate(req)) {
-            next();
-        } else {
-            Logger.info('Redirecting to login page');
-            res.redirect('/auth#/login');
+            Logger.info('Redirecting to clinical app');
+            res.redirect('/clinical');
             res.end();
+        } else {
+            next();
         }
     });
 
     controller.index(function (req, res, next) {
         try {
-            let data = {
-                name: "Manish Maharjan",
-                pageName: "Home"
-            };
-
-            Response.render(res, 'clinical', data);
+            Response.render(res, 'auth', {});
         } catch (error) {
             Response.renderErrorPage(res, '500', error);
         }
     });
 };
 
-clinicalController.route(Path.resolve(__filename));
-module.exports = clinicalController;
+authController.route(Path.resolve(__filename));
+module.exports = authController;

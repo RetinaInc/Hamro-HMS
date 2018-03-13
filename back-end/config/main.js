@@ -97,7 +97,7 @@ var main = {
         app.all('/',
             function (req, res, next) {
                 res.redirect('/' + $defaultController);
-                next();
+                res.end();
             });
     },
     /**

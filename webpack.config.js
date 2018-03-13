@@ -15,7 +15,8 @@ const config = {
             'babel-polyfill',
             'lodash.pickby'
         ],
-        app: ['./front-end/index.js']
+        clinicalApp: ['./front-end/clinicalApp.js'],
+        authApp: ['./front-end/authApp.js']
     },
     output: {
         path: path.resolve(__dirname, 'front-end/webApp/build'),
@@ -23,7 +24,7 @@ const config = {
     },
     module: {
         rules: [{
-            test: /\.js$/,
+            test: /\.js|\.jsx$/,
             exclude: /node_modules/,
             use: {
                 'loader': 'babel-loader',
