@@ -1,15 +1,15 @@
 'use strict';
 let Model = require('baseComponents/model');
 
-class TestBase {
+class ServiceBaseTest {
     static describe(description, tests) {
         describe(description, function() {
             beforeEach(async () => {
-                TestBase.dbOptions.transaction = await Model.transaction();
+                ServiceBaseTest.dbOptions.transaction = await Model.transaction();
             });
 
             afterEach(function() {
-                TestBase.dbOptions.transaction.rollback();
+                ServiceBaseTest.dbOptions.transaction.rollback();
             });
 
             tests();
@@ -17,8 +17,8 @@ class TestBase {
     }
 }
 
-TestBase.dbOptions = {
+ServiceBaseTest.dbOptions = {
     transaction: null
 };
 
-module.exports = TestBase;
+module.exports = ServiceBaseTest;

@@ -97,14 +97,14 @@ class Controller {
      */
     isValidFile(fullFilePath) {
         this.controllerFileName = fullFilePath.split(/\\|\//).pop();
-        if (this.controllerFileName.lastIndexOf('Controller') != -1) {
+        if (this.controllerFileName.lastIndexOf('Controller') !== -1) {
             this.controllerName = this.controllerFileName.substring(
                 0,
                 this.controllerFileName.lastIndexOf('Controller')
             );
             let parseFullFilePath = fullFilePath.match(/controllers(.*)\//);
             this.uri =
-                typeof parseFullFilePath[1] != 'undefined'
+                typeof parseFullFilePath[1] !== 'undefined'
                     ? parseFullFilePath[1] + '/' + this.controllerName
                     : '/' + this.controllerName;
 

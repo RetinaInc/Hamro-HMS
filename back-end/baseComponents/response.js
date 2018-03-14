@@ -25,7 +25,7 @@ class Response {
             '503': 'Service Unavailable'
         };
 
-        return typeof errorMsgList[errorCode] != 'undefined' ? errorMsgList[errorCode] : 'Internal Server Error';
+        return typeof errorMsgList[errorCode] !== 'undefined' ? errorMsgList[errorCode] : 'Internal Server Error';
     }
 
     /**

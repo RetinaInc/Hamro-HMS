@@ -3,8 +3,9 @@
 let auth = require('basic-auth');
 var Buffer = require('safe-buffer').Buffer;
 let encrypter = require('node-password-encrypter');
-let UserService = require('services/userService');
+let logger = require('baseComponents/logger');
 
+let UserService = require('services/userService');
 class Auth {
     static async authenticate(req) {
         let isAuthenticated = false;
@@ -13,8 +14,7 @@ class Auth {
         if (creds) {
             isAuthenticated = await Auth.login(creds, req);
         } else if (req.session.userUuid) {
-            console.log('-------------------- Already login  --------------');
-            console.log({userUuid: req.session.userUuid});
+            logger.info('Login User Uuid: %s', req.session.userUuid);
             isAuthenticated = true;
         }
 

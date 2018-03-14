@@ -2,12 +2,12 @@
 let chai = require('chai');
 let assert = chai.assert;
 
-let TestBase = require('baseComponents/baseTest');
+let ServiceBaseTest = require('baseComponents/serviceBaseTest');
 let User = require('models/user');
 let UserService = require('services/userService');
 let encrypter = require('node-password-encrypter');
 
-TestBase.describe('UserService tests', () => {
+ServiceBaseTest.describe('UserService tests', () => {
     it('Should get user by Uuid', async () => {
         let user = await UserService.getUserByUuid('2a1abd9c-86a1-4971-93f4-dd139f70f15d');
 
@@ -59,7 +59,7 @@ TestBase.describe('UserService tests', () => {
         user.password = tempEncrypt.encryptedContent;
         user.salt = tempEncrypt.salt;
 
-        await UserService.saveUser(user, TestBase.dbOptions);
+        await UserService.saveUser(user, ServiceBaseTest.dbOptions);
 
         assert.isNotNull(user.id);
         assert.equal(user.uuid, '92515967-f795-4278-8420-c344e8251369');

@@ -2,7 +2,7 @@
 let chai = require('chai');
 let assert = chai.assert;
 
-let TestBase = require('baseComponents/baseTest');
+let ServiceBaseTest = require('baseComponents/serviceBaseTest');
 let AuthenticationService = require('services/authenticationService');
 
 let testData = {
@@ -11,7 +11,7 @@ let testData = {
     }
 };
 
-TestBase.describe('Authentication service tests', () => {
+ServiceBaseTest.describe('Authentication service tests', () => {
     it('Should return login user details', async () => {
         let loginUser = await AuthenticationService.getLoginUser(testData.session);
 

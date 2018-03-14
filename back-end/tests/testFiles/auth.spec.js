@@ -2,11 +2,11 @@
 let chai = require('chai');
 let assert = chai.assert;
 
-let TestBase = require('baseComponents/baseTest');
+let ServiceBaseTest = require('baseComponents/serviceBaseTest');
 let Auth = require('baseComponents/auth');
 let User = require('models/user');
 
-TestBase.describe('Auth tests', () => {
+ServiceBaseTest.describe('Auth tests', () => {
     it('Should validate user by username & password', async () => {
         let creds = {
             name: 'admin',

@@ -34,8 +34,8 @@ export default class LoginPage extends React.Component {
         }
     }
 
-    shouldComponentUpdate(nextProps, nextState){
-        if(nextState.isLogin){
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextState.isLogin) {
             window.location = '/clinical';
         }
 

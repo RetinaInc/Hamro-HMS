@@ -3,17 +3,17 @@ let express = require('express');
 let mainApplication = require('config/main');
 let Model = require('baseComponents/model');
 
-class ApiBaseBase {
+class ControllerBaseBase {
     static describe(description, tests) {
         describe(description, function() {
             beforeEach(async () => {
                 global.app = module.exports = express();
-                mainApplication.init();
-                ApiBaseBase.dbOptions.transaction = await Model.transaction();
+                mainApplication.testAppInit(ControllerBaseBase.controllerPath);
+                ControllerBaseBase.dbOptions.transaction = await Model.transaction();
             });
 
             afterEach(function() {
-                ApiBaseBase.dbOptions.transaction.rollback();
+                ControllerBaseBase.dbOptions.transaction.rollback();
             });
 
             tests();
@@ -21,8 +21,9 @@ class ApiBaseBase {
     }
 }
 
-ApiBaseBase.dbOptions = {
+ControllerBaseBase.controllerPath = null;
+ControllerBaseBase.dbOptions = {
     transaction: null
 };
 
-module.exports = ApiBaseBase;
+module.exports = ControllerBaseBase;

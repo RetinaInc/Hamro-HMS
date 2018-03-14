@@ -1,5 +1,5 @@
 'use strict';
-var path = require('path');
+let path = require('path');
 
 module.exports = {
     WEB_APP_PATH: path.resolve(__dirname + '/../../front-end/webApp'),

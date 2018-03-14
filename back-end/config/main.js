@@ -20,15 +20,22 @@ var main = {
      *
      * @author Sanish Maharjan <sanishmaharjan@lftechnology.com>
      */
-    init: function() {
+    appInit: function() {
         logger.info('Initializing application...');
-        var mainApplication = this;
+        let mainApplication = this;
         mainApplication.configureModules();
         mainApplication.loadComponents();
         mainApplication.setDefaultController(constants.DEFAULT_CONTROLLER);
         process.on('uncaughtException', function(err) {
             mainApplication.handleUncaughtExceptions(err);
         });
+    },
+    testAppInit: function(controllerPath){
+        logger.info('Initializing test application...');
+        let mainApplication = this;
+        mainApplication.configureModules();
+        if(controllerPath)
+            require(controllerPath);
     },
     /**
      * Set and configure app modules
@@ -89,6 +96,7 @@ var main = {
                 main.includeFiles(path + '/' + file);
             } else if (fs.lstatSync(path + '/' + file).isFile()) {
                 require(path + '/' + file);
+                logger.info('Loaded controller %s', file);
             }
         });
     },

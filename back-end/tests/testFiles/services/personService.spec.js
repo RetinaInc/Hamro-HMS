@@ -2,11 +2,11 @@
 let chai = require('chai');
 let assert = chai.assert;
 
-let TestBase = require('baseComponents/baseTest');
+let ServiceBaseTest = require('baseComponents/serviceBaseTest');
 let Person = require('models/person');
 let PersonService = require('services/personService');
 
-TestBase.describe('PersonService tests', () => {
+ServiceBaseTest.describe('PersonService tests', () => {
     it('Should get person by Id', async () => {
         let person = await PersonService.getPersonById(2);
 
@@ -70,7 +70,7 @@ TestBase.describe('PersonService tests', () => {
         person.gender = 'Male';
         person.uuid = '1b671a64-40d5-491e-99b0-da01ff1f354';
 
-        await PersonService.savePerson(person, TestBase.dbOptions);
+        await PersonService.savePerson(person, ServiceBaseTest.dbOptions);
 
         assert.isNotNull(person.id);
         assert.equal(person.uuid, '1b671a64-40d5-491e-99b0-da01ff1f354');
@@ -87,7 +87,7 @@ TestBase.describe('PersonService tests', () => {
         person.uuid = null;
 
         try {
-            await PersonService.savePerson(person, TestBase.dbOptions);
+            await PersonService.savePerson(person, ServiceBaseTest.dbOptions);
 
             assert.assert.isNotOk('Should throw error');
         } catch (error) {

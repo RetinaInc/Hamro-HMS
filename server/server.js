@@ -10,7 +10,7 @@ let config = require('../back-end/config/config');
  * Configure express project
  */
 global.app = module.exports = express();
-mainApplication.init();
+mainApplication.appInit();
 
 /**
  * Create server

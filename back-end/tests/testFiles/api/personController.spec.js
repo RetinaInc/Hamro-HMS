@@ -2,9 +2,10 @@
 let chai = require('chai');
 let assert = chai.assert;
 let request = require('supertest');
-let ApiBaseTest = require('baseComponents/apiBaseTest');
+let ControllerBaseBase = require('baseComponents/controllerBaseTest');
 
-ApiBaseTest.describe('person Api test', () => {
+ControllerBaseBase.controllerPath = 'controllers/api/personController';
+ControllerBaseBase.describe('person Api test', () => {
     it('Should return all persons', (done) => {
         request(app)
             .get('/api/person')
