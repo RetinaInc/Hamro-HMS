@@ -8,6 +8,6 @@ export default class UrlHelper {
     };
 
     apiBaseUrl = () => {
-        return window.location.origin + '/ws/v1';
+        return window.location.origin + '/api';
     };
 }

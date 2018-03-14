@@ -29,4 +29,15 @@ export default class StateApi {
     getStateByKey = (key) => {
         return typeof this.app.state[key] !== 'undefined' ? this.app.state[key] : null;
     };
+
+    notify = (notifyType, message) => {
+        const notifier = this.app.refs.notifier;
+        if (notifyType === 'success') {
+            notifier.success(notifier.props.successText, message, 5000);
+        } else if (notifyType === 'error') {
+            notifier.error(notifier.props.errorText, message, 5000);
+        } else {
+            notifier.info(notifier.props.infoText, message, 5000);
+        }
+    };
 }

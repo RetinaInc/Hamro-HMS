@@ -8,13 +8,7 @@ let Auth = require('baseComponents/auth');
 let authController = new Controller();
 authController.router = function(controller) {
     controller.before(async (req, res, next) => {
-        if (await Auth.authenticate(req)) {
-            Logger.info('Redirecting to clinical app');
-            res.redirect('/clinical');
-            res.end();
-        } else {
-            next();
-        }
+        next();
     });
 
     controller.index(function(req, res, next) {

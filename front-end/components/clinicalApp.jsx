@@ -1,6 +1,7 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import TopNavBar from 'components/navigations/topNavBar';
 import PatientPageWrapper from 'components/pages/patients/patientPageWrapper';
@@ -20,12 +21,38 @@ export default class ClinicalApp extends React.Component {
     }
 
     constructor(props) {
+        console.log('----------- 1  -----------');
         super(props);
 
         this.state = {
-            timeStamp: new Date()
+            isLogin: false
         };
         this.urlHelper = new UrlHelper();
+    }
+
+    async componentWillMount() {
+        console.log('----------- 2  -----------');
+        let self = this;
+        try {
+            let response = await axios.get(this.urlHelper.apiBaseUrl() + '/authentication');
+            if (response.data.isLogin) {
+                this.setState({
+                    isLogin: response.data.isLogin
+                });
+            }
+        } catch (error) {
+            self.store.notify('error', error.message);
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        console.log('----------- 3  -----------');
+        if(!nextState.isLogin){
+            window.location = '/auth';
+            return false;
+        }
+
+        return true;
     }
 
     render() {

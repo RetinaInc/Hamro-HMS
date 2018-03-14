@@ -16,7 +16,7 @@ export default class UserDropDown extends React.Component {
                 </li>
                 <li className="divider" />
                 <li>
-                    <a href="login.html">
+                    <a href="/auth#/logout">
                         <i className="fa fa-sign-out fa-fw" /> Logout
                     </a>
                 </li>

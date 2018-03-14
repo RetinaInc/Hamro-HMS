@@ -8,8 +8,8 @@ let UserService = require('services/userService');
 let encrypter = require('node-password-encrypter');
 
 TestBase.describe('UserService tests', () => {
-    it('Should get user by Id', async () => {
-        let user = await UserService.getUserById(1);
+    it('Should get user by Uuid', async () => {
+        let user = await UserService.getUserByUuid('2a1abd9c-86a1-4971-93f4-dd139f70f15d');
 
         assert.isNotNull(user);
         assert.equal(user.id, 1);

@@ -63,17 +63,17 @@ class Response {
 
     static responseApi(response, data) {
         response.status('200');
-        response.json({data: data});
+        response.json(data);
     }
 
     static responseApiError(response, errorCode, errorMsg) {
         let apiData = {
-            errorCode: errorCode,
             message: errorMsg
         };
 
         response.status(errorCode);
-        response.json({data: apiData});
+        response.statusMessage = errorMsg;
+        response.json(apiData);
     }
 
     static responseApiDenied(response) {
