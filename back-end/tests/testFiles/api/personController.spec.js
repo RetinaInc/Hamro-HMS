@@ -12,7 +12,7 @@ ApiBaseTest.describe('person Api test', () => {
             .send({foo: 'bar'})
             .end((err, res) => {
                 //console.log(res.text);
-                const data = res.body.data;
+                const data = res.body;
 
                 assert.equal(200, res.statusCode);
                 assert.equal(3, data.length);

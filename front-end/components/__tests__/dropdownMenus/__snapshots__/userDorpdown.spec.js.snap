@@ -29,7 +29,7 @@ exports[`UserDropDown renders correctly 1`] = `
   />
   <li>
     <a
-      href="login.html"
+      href="/auth#/logout"
     >
       <i
         className="fa fa-sign-out fa-fw"
