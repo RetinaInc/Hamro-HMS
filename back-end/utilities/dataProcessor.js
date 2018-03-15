@@ -1,5 +1,4 @@
 'use strict';
-let path = require('path'); //used for file path
 let fs = require('fs-extra'); //File System - for file manipulation
 let formidable = require('formidable');
 let logger = require('baseComponents/logger');
@@ -15,12 +14,9 @@ exports.getFormData = function(req) {
         try {
             let form = new formidable.IncomingForm();
             form.parse(req, function(err, fields, files) {
-                let formData = {
-                    fields: fields,
-                    files: files
-                };
-
-                return resolve(formData);
+                let data = fields;
+                data.files = files;
+                return resolve(data);
             });
         } catch (error) {
             logger.error(error);

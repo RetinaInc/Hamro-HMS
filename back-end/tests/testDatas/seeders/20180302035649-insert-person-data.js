@@ -12,6 +12,7 @@ module.exports = {
                     lastName: 'Maharjan',
                     bod: new Date('1988-10-20'),
                     gender: 'Male',
+                    isDeleted: false,
                     createdAt: new Date()
                 },
                 {
@@ -21,6 +22,7 @@ module.exports = {
                     lastName: 'Maharjan',
                     bod: new Date('1980-02-05'),
                     gender: 'Male',
+                    isDeleted: false,
                     createdAt: new Date()
                 },
                 {
@@ -29,6 +31,7 @@ module.exports = {
                     firstName: 'Rita',
                     lastName: 'Maharjan',
                     gender: 'Female',
+                    isDeleted: false,
                     createdAt: new Date()
                 }
             ],
@@ -37,6 +40,6 @@ module.exports = {
     },
 
     down: (queryInterface, Sequelize) => {
-        return queryInterface.bulkDelete('Person', null, {});
+        return queryInterface.bulkDelete('persons', null, {});
     }
 };

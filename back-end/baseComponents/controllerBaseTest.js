@@ -6,9 +6,14 @@ let Model = require('baseComponents/model');
 class ControllerBaseBase {
     static describe(description, tests) {
         describe(description, function() {
-            beforeEach(async () => {
+            before(() => {
                 global.app = module.exports = express();
                 mainApplication.testAppInit(ControllerBaseBase.controllerPath);
+                if(ControllerBaseBase.router)
+                    ControllerBaseBase.router();
+            });
+
+            beforeEach(async () => {
                 ControllerBaseBase.dbOptions.transaction = await Model.transaction();
             });
 
@@ -18,6 +23,10 @@ class ControllerBaseBase {
 
             tests();
         });
+    }
+
+    static mockRouter(router){
+        ControllerBaseBase.router = router;
     }
 }
 

@@ -2,15 +2,15 @@
 let chai = require('chai');
 let assert = chai.assert;
 let request = require('supertest');
-let ControllerBaseBase = require('baseComponents/controllerBaseTest');
+let ControllerBaseTest = require('baseComponents/controllerBaseTest');
 
-ControllerBaseBase.controllerPath = 'controllers/api/personController';
-ControllerBaseBase.describe('person Api test', () => {
+ControllerBaseTest.controllerPath = 'controllers/api/personController';
+ControllerBaseTest.describe('person Api tests', () => {
     it('Should return all persons', (done) => {
-        request(app)
+        request(global.app)
             .get('/api/person')
             .set({Authorization: 'Basic YWRtaW46YWRtaW4hQCM='})
-            .send({foo: 'bar'})
+            .send({v: 'full'})
             .end((err, res) => {
                 //console.log(res.text);
                 const data = res.body;
@@ -21,7 +21,6 @@ ControllerBaseBase.describe('person Api test', () => {
                 assert.deepEqual(
                     {
                         fullName: 'Sanish Maharjan',
-                        id: 1,
                         uuid: '98520d95-0f7e-4921-a49f-73c8792ae43e',
                         firstName: 'Sanish',
                         middleName: null,
@@ -31,7 +30,6 @@ ControllerBaseBase.describe('person Api test', () => {
                     },
                     {
                         fullName: data[0].fullName,
-                        id: data[0].id,
                         uuid: data[0].uuid,
                         firstName: data[0].firstName,
                         middleName: data[0].middleName,
@@ -44,7 +42,6 @@ ControllerBaseBase.describe('person Api test', () => {
                 assert.deepEqual(
                     {
                         fullName: 'Rita Maharjan',
-                        id: 3,
                         uuid: '46a61768-f606-42c8-8b9e-d6c16e458339',
                         firstName: 'Rita',
                         middleName: null,
@@ -54,7 +51,6 @@ ControllerBaseBase.describe('person Api test', () => {
                     },
                     {
                         fullName: data[2].fullName,
-                        id: data[2].id,
                         uuid: data[2].uuid,
                         firstName: data[2].firstName,
                         middleName: data[2].middleName,
@@ -67,4 +63,43 @@ ControllerBaseBase.describe('person Api test', () => {
                 done();
             });
     });
+
+    it('Should return person by Uuid', (done) => {
+        request(global.app)
+            .get('/api/person/98520d95-0f7e-4921-a49f-73c8792ae43e')
+            .set({Authorization: 'Basic YWRtaW46YWRtaW4hQCM='})
+            .send({v: 'full'})
+            .end((err, res) => {
+                console.log(res.text);
+                const data = res.body;
+
+                assert.equal(200, res.statusCode);
+                assert.isNotEmpty(data);
+
+                assert.deepEqual(
+                    {
+                        fullName: 'Sanish Maharjan',
+                        uuid: '98520d95-0f7e-4921-a49f-73c8792ae43e',
+                        firstName: 'Sanish',
+                        middleName: null,
+                        lastName: 'Maharjan',
+                        gender: 'Male',
+                        bod: '1988-10-20 00:00:00.000 +00:00'
+                    },
+                    {
+                        fullName: data.fullName,
+                        uuid: data.uuid,
+                        firstName: data.firstName,
+                        middleName: data.middleName,
+                        lastName: data.lastName,
+                        gender: data.gender,
+                        bod: data.bod
+                    }
+                );
+
+                done();
+            });
+    });
+
+
 });

@@ -8,7 +8,7 @@ let PersonService = require('services/personService');
 
 ServiceBaseTest.describe('PersonService tests', () => {
     it('Should get person by Id', async () => {
-        let person = await PersonService.getPersonById(2);
+        let person = await PersonService.getPersonByUuid('ffee63e5-880f-470f-b8f4-836e382f74c3');
 
         assert.isNotNull(person);
         assert.equal(person.id, 2);

@@ -1,6 +1,5 @@
 'use strict';
 let User = require('models/user');
-let encrypter = require('node-password-encrypter');
 module.exports = {
     getUserByUuid: async (uuid) => {
         return  await User.findOne({where: {uuid: uuid, isDeleted: false}});

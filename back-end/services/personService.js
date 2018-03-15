@@ -1,8 +1,8 @@
 'use strict';
 let Person = require('models/person');
 module.exports = {
-    getPersonById: async (id) => {
-        return await Person.findById(id);
+    getPersonByUuid: async (uuid) => {
+        return await Person.findOne({where: {uuid: uuid, isDeleted: false}});
     },
     getAllPersons: async () => {
         return await Person.findAll();

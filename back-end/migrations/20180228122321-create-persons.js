@@ -34,6 +34,19 @@ module.exports = {
                 type: Sequelize.DATEONLY,
                 allowNull: true
             },
+            isDeleted: {
+                type: Sequelize.DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
+            deleteReason: {
+                type: Sequelize.DataTypes.BOOLEAN,
+                allowNull: true
+            },
+            deletedAt: {
+                type: Sequelize.DataTypes.DATE,
+                allowNull: true
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
