@@ -1,7 +1,6 @@
 'use strict';
 
 let auth = require('basic-auth');
-var Buffer = require('safe-buffer').Buffer;
 let encrypter = require('node-password-encrypter');
 let logger = require('baseComponents/logger');
 
@@ -41,21 +40,6 @@ class Auth {
         });
 
         return creds.name === 'admin' && isValidPassword;
-    }
-
-    static async encryptPassword(password) {
-        let tempEncrypt = await encrypter.encrypt({
-            content: password,
-            keylen: 64
-        });
-
-        return tempEncrypt;
-    }
-
-    static getBaseAuthHash(user, password) {
-        var token = user + ':' + password;
-        var hash = Buffer.from(token).toString('base64');
-        return 'Basic ' + hash;
     }
 }
 

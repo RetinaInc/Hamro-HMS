@@ -20,4 +20,17 @@ ServiceBaseTest.describe('Authentication service tests', () => {
         assert.isNotNull(loginUser.person);
         assert.equal('98520d95-0f7e-4921-a49f-73c8792ae43e', loginUser.person.uuid);
     });
+
+    it('Should encrypt password', async () => {
+        let encryptData = await AuthenticationService.encryptPassword('admin!@#');
+
+        assert.isNotNull(encryptData.encryptedContent);
+        assert.equal(128, encryptData.encryptedContent.length);
+        assert.isNotNull(encryptData.salt);
+    });
+
+    it('Should return basic Auth hash', () => {
+        let baseAuthHash = AuthenticationService.getBaseAuthHash('admin', 'admin!@#');
+        assert.equal('Basic YWRtaW46YWRtaW4hQCM=', baseAuthHash);
+    });
 });
