@@ -70,12 +70,10 @@ ControllerBaseTest.describe('person Api tests', () => {
             .set({Authorization: 'Basic YWRtaW46YWRtaW4hQCM='})
             .send({v: 'full'})
             .end((err, res) => {
-                console.log(res.text);
                 const data = res.body;
 
                 assert.equal(200, res.statusCode);
                 assert.isNotEmpty(data);
-
                 assert.deepEqual(
                     {
                         fullName: 'Sanish Maharjan',
