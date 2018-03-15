@@ -84,7 +84,7 @@ class Controller {
     route(fullFilePath) {
         if (this.isValidFile(fullFilePath)) {
             this.router(this.controller);
-            app.use(this.uri, this.controller.router());
+            global.app.use(this.uri, this.controller.router());
         }
 
         return this;

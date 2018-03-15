@@ -46,17 +46,17 @@ var main = {
         /**
          * set static path
          */
-        app.use(express.static(path.join(constants.WEB_APP_PATH)));
-        app.engine(
+        global.app.use(express.static(path.join(constants.WEB_APP_PATH)));
+        global.app.engine(
             'html',
             expressHandlebars({
                 extname: '.html'
             })
         );
-        app.set('view engine', 'html');
-        app.set('views', path.join(constants.WEB_APP_PATH));
-        app.enable('view cache');
-        app.use(
+        global.app.set('view engine', 'html');
+        global.app.set('views', path.join(constants.WEB_APP_PATH));
+        global.app.enable('view cache');
+        global.app.use(
             session({
                 secret: 'sessionKey!@#',
                 genid: function(req) {
@@ -107,7 +107,7 @@ var main = {
      * @author Sanish Maharjan <sanishmaharjan@lftechnology.com>
      */
     setDefaultController: function($defaultController) {
-        app.all('/', function(req, res, next) {
+        global.app.all('/', function(req, res, next) {
             res.redirect('/' + $defaultController);
             res.end();
         });
