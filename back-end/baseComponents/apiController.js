@@ -16,7 +16,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * Set apiData representation
+     * Set API Data representation
      * @param rep {object}
      */
     set representation(rep) {

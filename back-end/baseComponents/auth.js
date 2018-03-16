@@ -6,6 +6,11 @@ let logger = require('baseComponents/logger');
 
 let UserService = require('services/userService');
 class Auth {
+    /**
+     * Authenticate user
+     * @param req {object} Request
+     * @returns {boolean}
+     */
     static async authenticate(req) {
         let isAuthenticated = false;
         let creds = auth(req);
@@ -20,6 +25,12 @@ class Auth {
         return isAuthenticated;
     }
 
+    /**
+     * Login User
+     * @param creds {object} dataFormat {name: value, pass: value}
+     * @param req {object} Request
+     * @returns {boolean}
+     */
     static async login(creds, req) {
         let user = await UserService.getUserByUserName(creds.name);
         if (user != null && (await Auth.isValidUser(creds, user))) {
@@ -31,6 +42,12 @@ class Auth {
         return false;
     }
 
+    /**
+     * Validate User credential
+     * @param creds{object} dataFormat {name: value, pass: value}
+     * @param user {User} user Model
+     * @returns {boolean}
+     */
     static async isValidUser(creds, user) {
         let isValidPassword = await encrypter.compare({
             content: creds.pass,

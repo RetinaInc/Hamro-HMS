@@ -30,13 +30,6 @@ var main = {
             mainApplication.handleUncaughtExceptions(err);
         });
     },
-    testAppInit: function(controllerPath){
-        logger.info('Initializing test application...');
-        let mainApplication = this;
-        mainApplication.configureModules();
-        if(controllerPath)
-            require(controllerPath);
-    },
     /**
      * Set and configure app modules
      *

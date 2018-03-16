@@ -13,7 +13,7 @@ class Response {
             '403': 'Forbidden',
             '404': 'Not Found',
             '405': 'Method Not Allowed',
-            '406': 'Not Acceptable',
+            'c': 'Not Acceptable',
             '407': 'Proxy Authentication Required',
             '408': 'Request Timeout',
             '409': 'Conflict',
@@ -61,11 +61,22 @@ class Response {
         response.render('error/errorPage', options);
     }
 
+    /**
+     * Response api data
+     * @param response {object} http response
+     * @param data {json}
+     */
     static responseApi(response, data) {
         response.status('200');
         response.json(data);
     }
 
+    /**
+     * Response api error
+     * @param response {object} http response
+     * @param errorCode {number} 
+     * @param errorMsg {string}
+     */
     static responseApiError(response, errorCode, errorMsg) {
         let apiData = {
             message: errorMsg
@@ -76,12 +87,11 @@ class Response {
         response.json(apiData);
     }
 
+    /**
+     * Response authentication
+     * @param response {Response} http response
+     */
     static responseApiDenied(response) {
-        let apiData = {
-            errorCode: 401,
-            message: 'Access Denied! Please login.'
-        };
-
         response.statusCode = 401;
         response.setHeader('WWW-Authenticate', 'Basic realm="Authenticate to Access"');
         response.end('Access denied');

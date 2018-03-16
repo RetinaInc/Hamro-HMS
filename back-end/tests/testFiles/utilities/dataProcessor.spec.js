@@ -8,13 +8,13 @@ let request = require('supertest');
 let ControllerBaseTest = require('baseComponents/controllerBaseTest');
 let DataProcessor = require('utilities/dataProcessor');
 
-ControllerBaseTest.mockRouter(() => {
-    global.app.post('/dataProcessor', async (req, res) => {
+ControllerBaseTest.mockRouter((app) => {
+    app.post('/dataProcessor', async (req, res) => {
         let postData = await DataProcessor.getFormData(req);
         res.send(postData);
     });
 
-    global.app.post('/upload', async (req, res) => {
+    app.post('/upload', async (req, res) => {
         let postData = await DataProcessor.getFormData(req);
         let uploadDir = path.resolve(__dirname + '/../../upload');
         let fileName = await DataProcessor.uploadFile(postData.files.file, uploadDir);
@@ -29,11 +29,13 @@ ControllerBaseTest.mockRouter(() => {
 
 ControllerBaseTest.describe('Data Processor tests', () => {
     it('Should get post data', (done) => {
-        request(global.app)
+        request(ControllerBaseTest.app)
             .post('/dataProcessor')
             .send({firstName: 'Sanish', lastName: 'Maharjan'})
             .end((err, res) => {
                 const postData = res.body;
+
+                assert.equal(200, res.statusCode);
                 assert.isNotEmpty(postData);
                 assert.isEmpty(postData.files);
                 assert.equal('Sanish', postData.firstName);
@@ -43,12 +45,14 @@ ControllerBaseTest.describe('Data Processor tests', () => {
     });
 
     it('Should get form data', (done) => {
-        request(global.app)
+        request(ControllerBaseTest.app)
             .post('/dataProcessor')
             .field('title', 'App Icon')
             .attach('file', 'front-end/webApp/images/icon.png')
             .end((err, res) => {
                 const postData = res.body;
+
+                assert.equal(200, res.statusCode);
                 assert.isNotEmpty(postData);
                 assert.equal('App Icon', postData.title);
                 assert.isNotEmpty(postData.files);
@@ -58,12 +62,14 @@ ControllerBaseTest.describe('Data Processor tests', () => {
     });
 
     it('Should upload file', (done) => {
-        request(global.app)
+        request(ControllerBaseTest.app)
             .post('/upload')
             .field('title', 'App Icon')
             .attach('file', 'front-end/webApp/images/icon.png')
             .end((err, res) => {
                 const response = res.body;
+
+                assert.equal(200, res.statusCode);
                 assert.isNotNull(response.fileName);
                 assert.isNotNull(response.path);
                 assert.isTrue(fs.existsSync(response.path+'/'+response.fileName));

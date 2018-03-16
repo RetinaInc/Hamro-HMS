@@ -4,10 +4,21 @@ let assert = chai.assert;
 let request = require('supertest');
 let ControllerBaseTest = require('baseComponents/controllerBaseTest');
 
-ControllerBaseTest.controllerPath = 'controllers/api/personController';
+require('controllers/api/personController');
 ControllerBaseTest.describe('person Api tests', () => {
+    it('Should return 401 status for unAuthorize access', (done) => {
+        request(ControllerBaseTest.app)
+            .get('/api/person')
+            .send({v: 'full'})
+            .end((err, res) => {
+                assert.equal(401, res.statusCode);
+                assert.equal('Access denied', res.text);
+                done();
+            });
+    });
+
     it('Should return all persons', (done) => {
-        request(global.app)
+        request(ControllerBaseTest.app)
             .get('/api/person')
             .set({Authorization: 'Basic YWRtaW46YWRtaW4hQCM='})
             .send({v: 'full'})
@@ -65,7 +76,7 @@ ControllerBaseTest.describe('person Api tests', () => {
     });
 
     it('Should return person by Uuid', (done) => {
-        request(global.app)
+        request(ControllerBaseTest.app)
             .get('/api/person/98520d95-0f7e-4921-a49f-73c8792ae43e')
             .set({Authorization: 'Basic YWRtaW46YWRtaW4hQCM='})
             .send({v: 'full'})
@@ -98,6 +109,4 @@ ControllerBaseTest.describe('person Api tests', () => {
                 done();
             });
     });
-
-
 });

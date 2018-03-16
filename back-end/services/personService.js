@@ -5,7 +5,7 @@ module.exports = {
         return await Person.findOne({where: {uuid: uuid, isDeleted: false}});
     },
     getAllPersons: async () => {
-        return await Person.findAll();
+        return await Person.findAll({where: {isDeleted: false}});
     },
     savePerson: async (person, options) => {
         if (person.validate()) {

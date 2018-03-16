@@ -4,7 +4,6 @@ let Logger = require('baseComponents/logger');
 let Response = require('baseComponents/response');
 let Path = require('path');
 
-let Auth = require('baseComponents/auth');
 let authController = new Controller();
 authController.router = function(controller) {
     controller.before(async (req, res, next) => {
@@ -15,7 +14,8 @@ authController.router = function(controller) {
         try {
             Response.render(res, 'auth', {});
         } catch (error) {
-            Response.renderErrorPage(res, '500', error);
+            Logger.warn(error);
+            Response.renderErrorPage(res, error.statusCode ? error.statusCode : '500', error);
         }
     });
 };

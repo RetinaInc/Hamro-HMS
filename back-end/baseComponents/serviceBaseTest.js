@@ -2,6 +2,11 @@
 let Model = require('baseComponents/model');
 
 class ServiceBaseTest {
+    /**
+     * Service test describe
+     * @param description {string}
+     * @param tests {function} tests
+     */
     static describe(description, tests) {
         describe(description, function() {
             beforeEach(async () => {

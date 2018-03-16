@@ -11,7 +11,6 @@ clinicalController.router = function(controller) {
         if (await Auth.authenticate(req)) {
             next();
         } else {
-            Logger.info('Redirecting to login page');
             res.redirect('/auth#/login');
             res.end();
         }
@@ -26,7 +25,8 @@ clinicalController.router = function(controller) {
 
             Response.render(res, 'clinical', data);
         } catch (error) {
-            Response.renderErrorPage(res, '500', error);
+            Logger.warn(error);
+            Response.renderErrorPage(res, error.statusCode ? error.statusCode : '500', error);
         }
     });
 };

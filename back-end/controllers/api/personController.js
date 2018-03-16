@@ -49,7 +49,7 @@ personApiController.router = function (controller) {
             Response.responseApi(res, responseData);
         } catch (error) {
             Logger.error(error);
-            Response.responseApiError(res, error.statusCode ? error.statusCode : '500', error.message ? error.message : error);
+            Response.responseApiError(res, '500', error.message ? error.message : error);
         }
     });
 
@@ -64,7 +64,7 @@ personApiController.router = function (controller) {
             Response.responseApi(res, responseData);
         } catch (error) {
             Logger.error(error);
-            Response.responseApiError(res, error.statusCode ? error.statusCode : '500', error.message ? error.message : error);
+            Response.responseApiError(res, '500', error.message ? error.message : error);
         }
     });
 };
